@@ -1,69 +1,101 @@
-# CodeIgniter 4 Application Starter
+# 🕌 Sistem Informasi Masjid Al-Hikmah
 
-## What is CodeIgniter?
+## 📌 Tentang Sistem
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Sistem Informasi Masjid Al-Hikmah adalah aplikasi berbasis web yang dirancang untuk membantu pengelolaan operasional masjid secara digital, meliputi:
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- Manajemen keuangan masjid
+- Data jamaah
+- Pendaftaran relawan
+- Kegiatan masjid (kajian, sholat, sosial)
+- Inventaris dan aset
+- Laporan keuangan
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Sistem ini dibangun untuk mendukung transparansi, efisiensi, dan akuntabilitas pengelolaan masjid.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Installation & updates
+## 📖 Latar Belakang
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Proyek ini sebenarnya sudah direncanakan sejak tahun **2020**, dengan tujuan menggantikan pencatatan manual yang masih banyak dilakukan secara konvensional di lingkungan masjid.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Namun dalam perjalanannya, implementasi sistem ini mengalami beberapa kendala seperti:
 
-## Setup
+- Keterbatasan waktu pengembangan
+- Prioritas kegiatan operasional masjid
+- Kesiapan SDM dalam penggunaan sistem digital
+- Penyesuaian kebutuhan fitur di lapangan
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Akibatnya, pengembangan sistem sempat tertunda cukup lama.
 
-## Important Change with index.php
+---
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## 🚀 Pengembangan Ulang (2026)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Pada tahun **2026**, pengembangan sistem ini kembali dilanjutkan dengan pendekatan yang lebih matang dan terstruktur.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Beberapa perubahan penting dalam pengembangan ulang ini:
 
-## Repository Management
+- Migrasi ke CodeIgniter 4
+- Struktur database yang lebih rapi dan scalable
+- Penerapan sistem transaksi keuangan yang lebih fleksibel
+- Penambahan modul relawan dan kegiatan sosial
+- UI dashboard yang lebih modern dan responsif
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+---
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🏗️ Fitur Utama
 
-## Server Requirements
+### 💰 Keuangan
+- Transaksi pemasukan & pengeluaran
+- Kategori: infaq, zakat, sedekah, operasional
+- Metode pembayaran (cash, transfer, QRIS)
+- Laporan keuangan
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+### 🧑‍🤝‍🧑 Jamaah
+- Data jamaah
+- Pendaftaran relawan kegiatan masjid
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### 📅 Kegiatan
+- Jadwal sholat
+- Jadwal kajian
+- Kegiatan sosial
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+### 🏢 Aset Masjid
+- Inventaris barang
+- Pemeliharaan aset
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+---
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## ⚙️ Teknologi
+
+- PHP 8.2+
+- CodeIgniter 4
+- MySQL / MariaDB
+- Bootstrap UI
+- SweetAlert2
+- ApexCharts
+
+---
+
+## 🎯 Tujuan Sistem
+
+Sistem ini dibuat untuk:
+
+- Memudahkan pengurus masjid dalam pencatatan data
+- Meningkatkan transparansi keuangan
+- Mengurangi kesalahan pencatatan manual
+- Mempercepat pembuatan laporan
+- Mendukung digitalisasi masjid berbasis data
+
+---
+
+## 📌 Status Project
+
+🚧 Active Development (Restart 2026)
+
+---
+
+## 🧠 Catatan
+
+Sistem ini masih dalam tahap pengembangan dan akan terus disesuaikan dengan kebutuhan operasional di lapangan.
