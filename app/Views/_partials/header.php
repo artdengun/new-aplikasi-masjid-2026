@@ -134,128 +134,135 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
+    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="<?php echo base_url('/dashboard'); ?>">
+                <a class="nav-link" href="<?= base_url('/dashboard'); ?>">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
 
             <li class="nav-heading">Manajemen Masjid</li>
 
+            <!-- KEUANGAN -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#keuangan-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-cash-stack"></i><span>Keuangan</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-cash-stack"></i><span>Keuangan</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="keuangan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="transaksi.html">
+                        <a href="<?= base_url('transaksi'); ?>">
                             <i class="bi bi-credit-card"></i><span>Transaksi Keuangan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="laporan-keuangan.html">
+                        <a href="<?= base_url('laporan-keuangan'); ?>">
                             <i class="bi bi-file-earmark-bar-graph"></i><span>Laporan Keuangan</span>
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Keuangan Nav -->
+            </li>
 
+            <!-- ASET -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#aset-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-building"></i><span>Manajemen Aset</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-building"></i><span>Manajemen Aset</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="aset-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="inventaris.html">
+                        <a href="<?= base_url('inventaris'); ?>">
                             <i class="bi bi-archive"></i><span>Inventaris Masjid</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pemeliharaan.html">
+                        <a href="<?= base_url('pemeliharaan'); ?>">
                             <i class="bi bi-tools"></i><span>Pemeliharaan & Perbaikan</span>
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Aset Nav -->
+            </li>
 
+            <!-- KEGIATAN -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#kegiatan-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-calendar-event"></i><span>Kegiatan Masjid</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-calendar-event"></i><span>Kegiatan Masjid</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="kegiatan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="jadwal-shalat.html">
+                        <a href="<?= base_url('jadwal-sholat'); ?>">
                             <i class="bi bi-clock"></i><span>Jadwal Shalat</span>
                         </a>
                     </li>
                     <li>
-                        <a href="jadwal-kajian.html">
+                        <a href="<?= base_url('jadwal-kajian'); ?>">
                             <i class="bi bi-book"></i><span>Jadwal Kajian</span>
                         </a>
                     </li>
                     <li>
-                        <a href="kegiatan-lainnya.html">
+                        <a href="<?= base_url('kegiatan-sosial'); ?>">
                             <i class="bi bi-person-circle"></i><span>Kegiatan Sosial</span>
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Kegiatan Nav -->
+            </li>
 
+            <!-- JAMAAH -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#jamaah-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-people"></i><span>Manajemen Jamaah</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-people"></i><span>Manajemen Jamaah</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="jamaah-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="data-jamaah.html">
+                        <a href="<?= base_url('jamaah'); ?>">
                             <i class="bi bi-person"></i><span>Data Jamaah</span>
                         </a>
                     </li>
                     <li>
-                        <a href="relawan.html">
+                        <a href="<?= base_url('relawan'); ?>">
                             <i class="bi bi-person-plus"></i><span>Pendaftaran Relawan</span>
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Jamaah Nav -->
+            </li>
 
+            <!-- PANDUAN -->
             <li class="nav-heading">Panduan Penggunaan</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="bantuan-keuangan.html">
+                <a class="nav-link collapsed" href="<?= base_url('bantuan/keuangan'); ?>">
                     <i class="bi bi-question-circle"></i>
                     <span>Panduan Keuangan</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="bantuan-aset.html">
+                <a class="nav-link collapsed" href="<?= base_url('bantuan/aset'); ?>">
                     <i class="bi bi-question-circle"></i>
                     <span>Panduan Aset</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="bantuan-kotak-amal.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Panduan Kotak Amal</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="bantuan-kegiatan.html">
+                <a class="nav-link collapsed" href="<?= base_url('bantuan/kegiatan'); ?>">
                     <i class="bi bi-question-circle"></i>
                     <span>Panduan Kegiatan</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="bantuan-jamaah.html">
+                <a class="nav-link collapsed" href="<?= base_url('bantuan/jamaah'); ?>">
                     <i class="bi bi-question-circle"></i>
                     <span>Panduan Jamaah</span>
                 </a>
             </li>
 
-    </aside><!-- End Sidebar-->
+    </aside>
+    ><!-- End Sidebar-->

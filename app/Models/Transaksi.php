@@ -6,41 +6,64 @@ use CodeIgniter\Model;
 
 class Transaksi extends Model
 {
-    protected $table            = 'transaksis';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $table      = 'transaksis';
+    protected $primaryKey = 'id';
 
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
+    protected $returnType = 'array';
 
-    protected array $casts = [];
-    protected array $castHandlers = [];
+    protected $allowedFields = [
+        'tanggal',
+        'keterangan',
+        'kategori',
+        'jumlah',
+        'tipe',
+        'metode'
+    ];
 
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = true;
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    // 🔥 VALIDATION DI MODEL (biar controller bersih)
+    protected $validationRules = [
+        'tanggal'    => 'required',
+        'keterangan' => 'required',
+        'jumlah'     => 'required|numeric',
+        'tipe'       => 'required|in_list[masuk,keluar]',
+    ];
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $validationMessages = [
+        'tanggal' => [
+            'required' => 'Tanggal wajib diisi'
+        ],
+        'keterangan' => [
+            'required' => 'Keterangan wajib diisi'
+        ],
+        'jumlah' => [
+            'required' => 'Jumlah wajib diisi',
+            'numeric'  => 'Jumlah harus angka'
+        ],
+        'tipe' => [
+            'required' => 'Tipe wajib dipilih'
+        ]
+    ];
+
+    // 🔥 HELPER QUERY (buat dashboard nanti)
+    public function getMasuk()
+    {
+        return $this->where('tipe', 'masuk')->findAll();
+    }
+
+    public function getKeluar()
+    {
+        return $this->where('tipe', 'keluar')->findAll();
+    }
+
+    public function getTotalMasuk()
+    {
+        return $this->selectSum('jumlah')->where('tipe', 'masuk')->first()['jumlah'] ?? 0;
+    }
+
+    public function getTotalKeluar()
+    {
+        return $this->selectSum('jumlah')->where('tipe', 'keluar')->first()['jumlah'] ?? 0;
+    }
 }

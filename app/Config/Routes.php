@@ -48,6 +48,17 @@ $routes->get('/contact','Home::contact');
 
 
 
+// # data transaksi keuangan masjid
+$routes->group('transaksi', function($routes){
+    $routes->get('/', 'TransaksiController::index');
+    $routes->get('create', 'TransaksiController::create');
+
+    // 🔥 cukup 1 endpoint
+    $routes->post('save', 'TransaksiController::save');
+
+    $routes->get('edit/(:num)', 'TransaksiController::edit/$1');
+    $routes->get('delete/(:num)', 'TransaksiController::delete/$1');
+});
 
 // # data internal masjid terkait data 
 // $routes->get('daftarpengurus', 'PengurusController::index');
@@ -57,15 +68,6 @@ $routes->get('/contact','Home::contact');
 // $routes->get('daftarpengurus/edit/(:alphanum)', 'PengurusController::edit/$1');
 // $routes->post('daftarpengurus/update', 'PengurusController::update/$1');
 // $routes->get('daftarpengurus/delete/(:alphanum)', 'PengurusController::delete/$1');
-
-
-// $routes->get('daftarimam', 'ImamController::index');
-// $routes->get('daftarimam/laporan', 'ImamController::laporan');
-// $routes->get('daftarimam/create', 'ImamController::create');
-// $routes->post('daftarimam/store', 'ImamController::store');
-// $routes->get('daftarimam/edit/(:alphanum)', 'ImamController::edit/$1');
-// $routes->post('daftarimam/update/(:alphanum)', 'ImamController::update/$1');
-// $routes->get('daftarimam/delete/(:alphanum)', 'ImamController::delete/$1');
 
 
 // $routes->get('daftarmuazin', 'MuazinController::index');
