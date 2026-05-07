@@ -1,33 +1,54 @@
-```php
 <?php echo view('_partials/header'); ?>
 
 <main id="main" class="main">
 
   <!-- ======= PAGE TITLE ======= -->
   <div class="pagetitle">
-    <h1>Tambah Transaksi</h1>
+
+    <h1>
+
+      <i class="bi bi-plus-circle me-2"></i>
+      Tambah Transaksi
+
+    </h1>
 
     <nav>
+
       <ol class="breadcrumb">
 
         <li class="breadcrumb-item">
+
           <a href="<?= base_url('/dashboard') ?>">
+
+            <i class="bi bi-house-door"></i>
             Dashboard
+
           </a>
+
         </li>
 
         <li class="breadcrumb-item">
+
           <a href="<?= base_url('/transaksi') ?>">
+
+            <i class="bi bi-wallet2"></i>
             Transaksi
+
           </a>
+
         </li>
 
         <li class="breadcrumb-item active">
+
+          <i class="bi bi-plus-circle"></i>
           Tambah
+
         </li>
 
       </ol>
+
     </nav>
+
   </div>
   <!-- End Page Title -->
 
@@ -39,13 +60,118 @@
 
       <div class="col-lg-12">
 
-        <div class="card">
+        <!-- 🔥 CARD -->
+        <div class="card shadow-sm border-0 mt-4">
 
-          <div class="card-body">
+          <div class="card-header bg-white border-0 pt-4 pb-3 px-4">
 
-            <h5 class="card-title">
+            <h5 class="card-title mb-0 fw-bold">
+
+              <i class="bi bi-journal-plus text-primary me-2"></i>
               Form Tambah Transaksi
+
             </h5>
+
+          </div>
+
+          <div class="card-body px-4 pb-4">
+
+            <!-- 🔥 INFO CARD -->
+            <div class="row g-3 mb-4">
+
+              <div class="col-md-4">
+
+                <div class="card bg-success text-white border-0 shadow-sm h-100">
+
+                  <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                      <div>
+
+                        <small class="opacity-75">
+                          Transaksi Masuk
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+                          Donasi / Infaq
+                        </h5>
+
+                      </div>
+
+                      <i class="bi bi-arrow-down-circle fs-1 opacity-75"></i>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="card bg-danger text-white border-0 shadow-sm h-100">
+
+                  <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                      <div>
+
+                        <small class="opacity-75">
+                          Transaksi Keluar
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+                          Operasional
+                        </h5>
+
+                      </div>
+
+                      <i class="bi bi-arrow-up-circle fs-1 opacity-75"></i>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <div class="card bg-primary text-white border-0 shadow-sm h-100">
+
+                  <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                      <div>
+
+                        <small class="opacity-75">
+                          Metode Pembayaran
+                        </small>
+
+                        <h5 class="fw-bold mt-2">
+                          Cash / QRIS
+                        </h5>
+
+                      </div>
+
+                      <i class="bi bi-credit-card fs-1 opacity-75"></i>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+            <!-- END INFO CARD -->
+
 
             <!-- FORM -->
             <form action="<?= base_url('transaksi/save'); ?>"
@@ -60,8 +186,11 @@
                   <!-- TANGGAL -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-calendar-event me-1 text-primary"></i>
                       Tanggal
+
                     </label>
 
                     <input type="date"
@@ -76,8 +205,11 @@
                   <!-- KETERANGAN -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-card-text me-1 text-primary"></i>
                       Keterangan
+
                     </label>
 
                     <input type="text"
@@ -93,8 +225,11 @@
                   <!-- KATEGORI -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-tags me-1 text-primary"></i>
                       Kategori
+
                     </label>
 
                     <select name="kategori"
@@ -143,8 +278,11 @@
                   <!-- JUMLAH -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-cash-stack me-1 text-primary"></i>
                       Jumlah
+
                     </label>
 
                     <input type="text"
@@ -157,7 +295,10 @@
                            required>
 
                     <small class="text-muted">
+
+                      <i class="bi bi-info-circle"></i>
                       Gunakan nominal tanpa simbol Rp
+
                     </small>
 
                   </div>
@@ -166,8 +307,11 @@
                   <!-- TIPE -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-arrow-left-right me-1 text-primary"></i>
                       Tipe Transaksi
+
                     </label>
 
                     <select name="tipe"
@@ -194,8 +338,11 @@
                   <!-- METODE -->
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-credit-card me-1 text-primary"></i>
                       Metode Pembayaran
+
                     </label>
 
                     <select name="metode"
@@ -229,7 +376,7 @@
 
 
               <!-- BUTTON -->
-              <div class="text-end mt-3">
+              <div class="text-end mt-4">
 
                 <a href="<?= base_url('transaksi'); ?>"
                    class="btn btn-secondary">
@@ -257,6 +404,7 @@
           </div>
 
         </div>
+        <!-- END CARD -->
 
       </div>
 

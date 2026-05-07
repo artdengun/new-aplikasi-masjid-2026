@@ -2,52 +2,196 @@
 
 <main id="main" class="main">
 
-  <div class="pagetitle text-center">
-    <h1>Edit Transaksi</h1>
+  <!-- ======= PAGE TITLE ======= -->
+  <div class="pagetitle">
+
+    <h1>
+      <i class="bi bi-pencil-square text-warning"></i>
+      Edit Transaksi
+    </h1>
 
     <nav>
-      <ol class="breadcrumb justify-content-center">
+      <ol class="breadcrumb">
+
         <li class="breadcrumb-item">
-          <a href="<?= base_url('/dashboard') ?>">Dashboard</a>
+          <a href="<?= base_url('/dashboard') ?>">
+            <i class="bi bi-house-door"></i>
+            Dashboard
+          </a>
         </li>
 
         <li class="breadcrumb-item">
-          <a href="<?= base_url('/transaksi') ?>">Transaksi</a>
+          <a href="<?= base_url('/transaksi') ?>">
+            <i class="bi bi-wallet2"></i>
+            Transaksi
+          </a>
         </li>
 
-        <li class="breadcrumb-item active">Edit</li>
+        <li class="breadcrumb-item active">
+          <i class="bi bi-pencil"></i>
+          Edit
+        </li>
+
       </ol>
     </nav>
+
   </div>
+  <!-- End Page Title -->
+
 
   <section class="section">
-    <div class="row justify-content-center">
 
-      <div class="col-lg-8">
+    <!-- ======= INFO CARD ======= -->
+    <div class="row mb-4">
 
-        <div class="card shadow-sm">
+      <div class="col-md-4">
+
+        <div class="card bg-warning text-dark shadow-sm border-0 rounded-4">
 
           <div class="card-body">
 
-            <h5 class="card-title">
-              Form Edit Transaksi
-            </h5>
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div>
+
+                <h6 class="mb-1">
+                  Edit Data
+                </h6>
+
+                <small>
+                  Perbarui transaksi keuangan
+                </small>
+
+              </div>
+
+              <i class="bi bi-pencil-square fs-1"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="card bg-success text-white shadow-sm border-0 rounded-4">
+
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div>
+
+                <h6 class="mb-1">
+                  Data Aman
+                </h6>
+
+                <small>
+                  Perubahan tersimpan otomatis
+                </small>
+
+              </div>
+
+              <i class="bi bi-shield-check fs-1"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="card bg-primary text-white shadow-sm border-0 rounded-4">
+
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div>
+
+                <h6 class="mb-1">
+                  Sistem Masjid
+                </h6>
+
+                <small>
+                  Kelola transaksi lebih mudah
+                </small>
+
+              </div>
+
+              <i class="bi bi-bank fs-1"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- END INFO CARD -->
+
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-10">
+
+        <div class="card shadow-sm border-0 rounded-4">
+
+          <div class="card-body p-4">
+
+            <div class="d-flex align-items-center mb-4">
+
+              <div class="bg-warning text-dark rounded-3 p-3 me-3 shadow-sm">
+
+                <i class="bi bi-pencil-square fs-4"></i>
+
+              </div>
+
+              <div>
+
+                <h4 class="mb-1">
+                  Form Edit Transaksi
+                </h4>
+
+                <small class="text-muted">
+                  Silakan perbarui data transaksi keuangan masjid
+                </small>
+
+              </div>
+
+            </div>
 
             <?php if(session('errors')): ?>
-              <div class="alert alert-danger">
+
+              <div class="alert alert-danger rounded-3">
+
                 <?php foreach(session('errors') as $e): ?>
-                  <div><?= $e ?></div>
+
+                  <div>
+                    <i class="bi bi-exclamation-circle"></i>
+                    <?= $e ?>
+                  </div>
+
                 <?php endforeach; ?>
+
               </div>
+
             <?php endif; ?>
 
+            <!-- FORM -->
             <form 
               action="<?= base_url('transaksi/save'); ?>" 
               method="post"
               class="form-transaksi"
             >
 
-              <!-- ID -->
               <input 
                 type="hidden" 
                 name="id" 
@@ -58,10 +202,14 @@
 
                 <!-- TANGGAL -->
                 <div class="col-md-6">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-calendar-event text-primary"></i>
                       Tanggal
+
                     </label>
 
                     <input 
@@ -73,14 +221,19 @@
                     >
 
                   </div>
+
                 </div>
 
                 <!-- JUMLAH -->
                 <div class="col-md-6">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-cash-stack text-success"></i>
                       Jumlah
+
                     </label>
 
                     <input 
@@ -94,15 +247,24 @@
                       required
                     >
 
+                    <small class="text-muted">
+                      Gunakan format angka tanpa simbol Rp
+                    </small>
+
                   </div>
+
                 </div>
 
                 <!-- KETERANGAN -->
                 <div class="col-md-12">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-chat-left-text text-info"></i>
                       Keterangan
+
                     </label>
 
                     <input 
@@ -115,14 +277,19 @@
                     >
 
                   </div>
+
                 </div>
 
                 <!-- KATEGORI -->
                 <div class="col-md-6">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-tags text-warning"></i>
                       Kategori
+
                     </label>
 
                     <select 
@@ -178,14 +345,19 @@
                     </select>
 
                   </div>
+
                 </div>
 
                 <!-- TIPE -->
                 <div class="col-md-6">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-arrow-left-right text-danger"></i>
                       Tipe Transaksi
+
                     </label>
 
                     <select 
@@ -213,14 +385,19 @@
                     </select>
 
                   </div>
+
                 </div>
 
                 <!-- METODE -->
                 <div class="col-md-12">
+
                   <div class="mb-3">
 
-                    <label class="form-label">
+                    <label class="form-label fw-semibold">
+
+                      <i class="bi bi-credit-card text-primary"></i>
                       Metode Pembayaran
+
                     </label>
 
                     <select 
@@ -255,36 +432,47 @@
                     </select>
 
                   </div>
+
                 </div>
 
               </div>
 
-              <div class="text-end">
+              <!-- BUTTON -->
+              <div class="text-end mt-4">
 
                 <a 
                   href="<?= base_url('transaksi'); ?>" 
-                  class="btn btn-secondary"
+                  class="btn btn-secondary rounded-pill px-4"
                 >
+
+                  <i class="bi bi-arrow-left"></i>
                   Kembali
+
                 </a>
 
                 <button 
                   type="submit"
-                  class="btn btn-primary btn-save"
+                  class="btn btn-primary rounded-pill px-4 btn-save"
                 >
+
                   <i class="bi bi-save"></i>
                   Update Data
+
                 </button>
 
               </div>
 
             </form>
+            <!-- END FORM -->
 
           </div>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
 </main>
