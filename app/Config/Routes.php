@@ -58,7 +58,7 @@ $routes->group('transaksi', function($routes){
     $routes->post('save', 'TransaksiController::save');
 
     $routes->get('edit/(:num)', 'TransaksiController::edit/$1');
-    
+
     $routes->get('delete/(:num)', 'TransaksiController::delete/$1');
 });
 
@@ -74,6 +74,21 @@ $routes->group('inventaris', function($routes){
     $routes->get('edit/(:num)', 'InventarisController::edit/$1');
 
     $routes->get('delete/(:num)', 'InventarisController::delete/$1');
+
+});
+
+// pemeliharaan masjid terkait data inventaris
+$routes->group('pemeliharaan', function($routes){
+
+    $routes->get('/', 'PemeliharaanController::index');
+
+    $routes->get('create', 'PemeliharaanController::create');
+
+    $routes->post('save', 'PemeliharaanController::save');
+
+    $routes->get('edit/(:num)', 'PemeliharaanController::edit/$1');
+
+    $routes->get('delete/(:num)', 'PemeliharaanController::delete/$1');
 
 });
 // # data internal masjid terkait data 

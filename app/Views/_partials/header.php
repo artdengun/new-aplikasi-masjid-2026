@@ -182,7 +182,7 @@
                     </li>
                     <li>
                         <a href="<?= base_url('pemeliharaan'); ?>">
-                            <i class="bi bi-tools"></i><span>Pemeliharaan & Perbaikan</span>
+                            <i class="bi bi-tools"></i><span>Maintenance</span>
                         </a>
                     </li>
                 </ul>
