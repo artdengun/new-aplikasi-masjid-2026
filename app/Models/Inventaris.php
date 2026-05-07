@@ -8,39 +8,39 @@ class Inventaris extends Model
 {
     protected $table            = 'inventaris';
     protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
+
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
 
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
+    protected $allowedFields = [
+        'kode_barang',
+        'nama_barang',
+        'kategori',
+        'jumlah',
+        'kondisi',
+        'lokasi',
+        'tanggal_beli',
+        'harga',
+        'keterangan'
+    ];
 
-    protected array $casts = [];
-    protected array $castHandlers = [];
+    protected $useTimestamps = true;
 
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $validationRules = [
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+        'kode_barang' => 'required',
+        'nama_barang' => 'required',
+        'kategori'    => 'required',
+        'jumlah'      => 'required|numeric',
+        'kondisi'     => 'required',
+        'lokasi'      => 'required',
+        'tanggal_beli'=> 'required',
+        'harga'       => 'required|numeric',
+    ];
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $validationMessages = [
+        'nama_barang' => [
+            'required' => 'Nama barang wajib diisi'
+        ]
+    ];
 }

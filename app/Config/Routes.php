@@ -51,15 +51,31 @@ $routes->get('/contact','Home::contact');
 // # data transaksi keuangan masjid
 $routes->group('transaksi', function($routes){
     $routes->get('/', 'TransaksiController::index');
+
     $routes->get('create', 'TransaksiController::create');
 
     // 🔥 cukup 1 endpoint
     $routes->post('save', 'TransaksiController::save');
 
     $routes->get('edit/(:num)', 'TransaksiController::edit/$1');
+    
     $routes->get('delete/(:num)', 'TransaksiController::delete/$1');
 });
 
+// INVENTARIS MASJID
+$routes->group('inventaris', function($routes){
+
+    $routes->get('/', 'InventarisController::index');
+
+    $routes->get('create', 'InventarisController::create');
+
+    $routes->post('save', 'InventarisController::save');
+
+    $routes->get('edit/(:num)', 'InventarisController::edit/$1');
+
+    $routes->get('delete/(:num)', 'InventarisController::delete/$1');
+
+});
 // # data internal masjid terkait data 
 // $routes->get('daftarpengurus', 'PengurusController::index');
 // $routes->get('daftarpengurus/laporan', 'PengurusController::laporan');
