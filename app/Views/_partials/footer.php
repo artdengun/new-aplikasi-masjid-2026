@@ -13,51 +13,50 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Template Main JS File -->
   <script src="<?php echo base_url('dash/js/main.js'); ?>"></script>
-  <script>
-    // Contoh penggunaan ApexCharts untuk grafik laporan keuangan
-    document.addEventListener("DOMContentLoaded", () => {
-      new ApexCharts(document.querySelector("#reportsChart"), {
-        series: [{
-          name: 'Pemasukan',
-          data: [1000000, 1500000, 1200000, 2000000]
-        }, {
-          name: 'Pengeluaran',
-          data: [800000, 900000, 1000000, 1200000]
-        }],
-        chart: {
-          height: 350,
-          type: 'area',
-          toolbar: { show: false }
-        },
-        colors: ['#2ecc71', '#e74c3c'],
-        stroke: { curve: 'smooth', width: 2 },
-        xaxis: {
-          categories: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4']
-        }
-      }).render();
-});
-
-// Format input jumlah dengan pemisah ribuan
-const input = document.getElementById('jumlah');
-
-input.addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-
-    if (value.length > 0) {
-        value = new Intl.NumberFormat('id-ID').format(value);
-    }
-
-    e.target.value = value;
-});
-  </script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ✅ FORMAT INPUT JUMLAH (AMAN)
-  const input = document.getElementById('jumlah');
-  if (input) {
-    input.addEventListener('input', function(e) {
+  // =========================================
+  // APEX CHART
+  // =========================================
+  const reportChart = document.querySelector("#reportsChart");
+
+  if (reportChart) {
+    new ApexCharts(reportChart, {
+      series: [{
+        name: 'Pemasukan',
+        data: [1000000, 1500000, 1200000, 2000000]
+      }, {
+        name: 'Pengeluaran',
+        data: [800000, 900000, 1000000, 1200000]
+      }],
+      chart: {
+        height: 350,
+        type: 'area',
+        toolbar: {
+          show: false
+        }
+      },
+      colors: ['#2ecc71', '#e74c3c'],
+      stroke: {
+        curve: 'smooth',
+        width: 2
+      },
+      xaxis: {
+        categories: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4']
+      }
+    }).render();
+  }
+
+  // =========================================
+  // FORMAT RUPIAH
+  // =========================================
+  const inputJumlah = document.getElementById('jumlah');
+
+  if (inputJumlah) {
+    inputJumlah.addEventListener('input', function(e) {
+
       let value = e.target.value.replace(/\D/g, '');
 
       if (value.length > 0) {
@@ -68,30 +67,72 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ✅ DELETE (PAKAI EVENT DELEGATION - WAJIB BUAT DATATABLE)
+
+
+  // =========================================
+  // FLASHDATA SUCCESS
+  // =========================================
+  <?php if(session()->getFlashdata('success')): ?>
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Berhasil',
+      text: <?= json_encode(session()->getFlashdata('success')); ?>,
+      timer: 2000,
+      showConfirmButton: false
+    });
+
+  <?php endif; ?>
+
+
+  // =========================================
+  // FLASHDATA ERROR
+  // =========================================
+  <?php if(session()->getFlashdata('errors')): ?>
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Gagal',
+      html: `
+        <?php
+          foreach(session()->getFlashdata('errors') as $e){
+            echo $e . '<br>';
+          }
+        ?>
+      `
+    });
+
+  <?php endif; ?>
+
+  // =========================================
+  // DELETE SWEETALERT
+  // =========================================
   document.addEventListener("click", function(e){
-    const btn = e.target.closest('.btn-delete');
-    if (!btn) return;
+
+    const btnDelete = e.target.closest('.btn-delete');
+
+    if (!btnDelete) return;
 
     e.preventDefault();
-    const url = btn.getAttribute('data-url');
+
+    const url = btnDelete.getAttribute('data-url');
 
     Swal.fire({
       title: 'Yakin?',
-      text: "Data akan dihapus permanen!",
+      text: 'Data akan dihapus permanen!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      cancelButtonColor: '#6c757d',
       confirmButtonText: 'Ya, hapus!',
       cancelButtonText: 'Batal'
     }).then((result) => {
+
       if (result.isConfirmed) {
 
-        // loading
         Swal.fire({
           title: 'Menghapus...',
-          text: 'Sedang memproses',
+          text: 'Sedang memproses data',
           allowOutsideClick: false,
           didOpen: () => {
             Swal.showLoading();
@@ -101,47 +142,49 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = url;
       }
     });
+
   });
 
-});
-</script>
+  // =========================================
+  // FORM SUBMIT SWEETALERT
+  // =========================================
+  const formTransaksi = document.querySelector('.form-transaksi');
 
+  if (formTransaksi) {
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    formTransaksi.addEventListener('submit', function(e){
 
-  const form = document.querySelector("form"); // atau kasih ID biar lebih aman
-
-  if (form) {
-    form.addEventListener("submit", function(e) {
       e.preventDefault();
 
       Swal.fire({
-        title: 'Simpan data?',
-        text: "Pastikan data sudah benar",
+        title: 'Simpan Data?',
+        text: 'Pastikan data transaksi sudah benar',
         icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#28a745',
+        confirmButtonColor: '#198754',
         cancelButtonColor: '#6c757d',
         confirmButtonText: 'Ya, simpan!',
         cancelButtonText: 'Batal'
       }).then((result) => {
+
         if (result.isConfirmed) {
 
-          // loading dulu
           Swal.fire({
             title: 'Menyimpan...',
-            text: 'Sedang memproses',
+            text: 'Sedang memproses data',
             allowOutsideClick: false,
             didOpen: () => {
               Swal.showLoading();
             }
           });
 
-          form.submit(); // lanjut submit manual
+          formTransaksi.submit();
         }
+
       });
+
     });
+
   }
 
 });
