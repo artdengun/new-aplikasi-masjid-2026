@@ -196,7 +196,7 @@
                 </a>
                 <ul id="kegiatan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="<?= base_url('kegiatan-masjid'); ?>">
+                        <a href="<?= base_url('kegiatan'); ?>">
                             <i class="bi bi-book"></i><span>Kegiatan Masjid</span>
                         </a>
                     </li>

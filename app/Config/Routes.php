@@ -48,6 +48,20 @@ $routes->get('/contact','Home::contact');
 $routes->get('/pusat-bantuan','Home::pusatBantuan');
 
 
+$routes->group('kegiatan', function ($routes) {
+    $routes->get('/', 'KegiatanController::index');
+
+    $routes->get('create', 'KegiatanController::create');
+
+    $routes->post('save', 'KegiatanController::save');
+
+    $routes->get('edit/(:num)', 'KegiatanController::edit/$1');
+
+    $routes->post('update/(:num)', 'KegiatanController::update/$1');
+
+    $routes->get('delete/(:num)', 'KegiatanController::delete/$1');
+});
+
 
 // # data transaksi keuangan masjid
 $routes->group('transaksi', function($routes){
