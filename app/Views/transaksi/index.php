@@ -50,19 +50,42 @@
                     <div
                         class="card-header bg-white border-0 pt-4 pb-3 px-4 d-flex justify-content-between align-items-center">
 
-                        <h5 class="card-title mb-0 fw-bold">
+                        <div>
 
-                            <i class="bi bi-table me-2 text-primary"></i>
-                            Data Transaksi Keuangan
+                            <h5 class="card-title mb-1 fw-bold">
 
-                        </h5>
+                                <i class="bi bi-table me-2 text-primary"></i>
+                                Data Transaksi Keuangan
 
-                        <a href="<?= base_url('transaksi/create'); ?>" class="btn btn-success btn-sm shadow-sm">
+                            </h5>
 
-                            <i class="bi bi-plus-circle me-1"></i>
-                            Tambah Transaksi
+                            <small class="text-muted">
 
-                        </a>
+                                Monitoring pemasukan & pengeluaran masjid
+
+                            </small>
+
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <a href="<?= base_url('laporan-keuangan'); ?>"
+                                class="btn btn-outline-primary btn-sm shadow-sm">
+
+                                <i class="bi bi-bar-chart-line"></i>
+                                Laporan
+
+                            </a>
+
+                            <a href="<?= base_url('transaksi/create'); ?>"
+                                class="btn btn-success btn-sm shadow-sm">
+
+                                <i class="bi bi-plus-circle me-1"></i>
+                                Tambah Transaksi
+
+                            </a>
+
+                        </div>
 
                     </div>
                     <!-- End Card Header -->
@@ -77,7 +100,7 @@
                             <!-- TOTAL -->
                             <div class="col-md-3">
 
-                                <div class="card border-0 shadow-sm h-100 bg-primary text-white">
+                                <div class="card border-0 shadow-sm h-100 bg-primary text-white rounded-4">
 
                                     <div class="card-body">
 
@@ -95,7 +118,12 @@
 
                                             </div>
 
-                                            <i class="bi bi-receipt fs-1 opacity-75"></i>
+                                            <div
+                                                class="rounded-circle bg-white bg-opacity-25 p-3 d-flex align-items-center justify-content-center">
+
+                                                <i class="bi bi-receipt fs-3"></i>
+
+                                            </div>
 
                                         </div>
 
@@ -108,7 +136,7 @@
                             <!-- PEMASUKAN -->
                             <div class="col-md-3">
 
-                                <div class="card border-0 shadow-sm h-100 bg-success text-white">
+                                <div class="card border-0 shadow-sm h-100 bg-success text-white rounded-4">
 
                                     <div class="card-body">
 
@@ -129,7 +157,12 @@
 
                                             </div>
 
-                                            <i class="bi bi-arrow-down-circle fs-1 opacity-75"></i>
+                                            <div
+                                                class="rounded-circle bg-white bg-opacity-25 p-3 d-flex align-items-center justify-content-center">
+
+                                                <i class="bi bi-arrow-down-circle fs-3"></i>
+
+                                            </div>
 
                                         </div>
 
@@ -142,7 +175,7 @@
                             <!-- PENGELUARAN -->
                             <div class="col-md-3">
 
-                                <div class="card border-0 shadow-sm h-100 bg-danger text-white">
+                                <div class="card border-0 shadow-sm h-100 bg-danger text-white rounded-4">
 
                                     <div class="card-body">
 
@@ -163,7 +196,12 @@
 
                                             </div>
 
-                                            <i class="bi bi-arrow-up-circle fs-1 opacity-75"></i>
+                                            <div
+                                                class="rounded-circle bg-white bg-opacity-25 p-3 d-flex align-items-center justify-content-center">
+
+                                                <i class="bi bi-arrow-up-circle fs-3"></i>
+
+                                            </div>
 
                                         </div>
 
@@ -177,12 +215,12 @@
                             <div class="col-md-3">
 
                                 <?php
-                  $masuk = array_sum(array_column(array_filter($transaksi, fn($t) => $t['tipe'] == 'masuk'), 'jumlah'));
-                  $keluar = array_sum(array_column(array_filter($transaksi, fn($t) => $t['tipe'] == 'keluar'), 'jumlah'));
-                  $saldo = $masuk - $keluar;
-                ?>
+                                $masuk = array_sum(array_column(array_filter($transaksi, fn($t) => $t['tipe'] == 'masuk'), 'jumlah'));
+                                $keluar = array_sum(array_column(array_filter($transaksi, fn($t) => $t['tipe'] == 'keluar'), 'jumlah'));
+                                $saldo = $masuk - $keluar;
+                                ?>
 
-                                <div class="card border-0 shadow-sm h-100 bg-warning text-dark">
+                                <div class="card border-0 shadow-sm h-100 bg-warning text-dark rounded-4">
 
                                     <div class="card-body">
 
@@ -202,7 +240,12 @@
 
                                             </div>
 
-                                            <i class="bi bi-wallet2 fs-1 opacity-75"></i>
+                                            <div
+                                                class="rounded-circle bg-dark bg-opacity-10 p-3 d-flex align-items-center justify-content-center">
+
+                                                <i class="bi bi-wallet2 fs-3"></i>
+
+                                            </div>
 
                                         </div>
 
@@ -216,10 +259,118 @@
                         <!-- End Card Info -->
 
 
+                        <!-- ======= FILTER & ACTION ======= -->
+                        <div class="card border-0 shadow-sm mb-4 rounded-4">
+
+                            <div class="card-body py-3">
+
+                                <div class="row align-items-end g-3">
+
+                                    <!-- FILTER TANGGAL -->
+                                    <div class="col-md-3">
+
+                                        <label class="form-label fw-semibold">
+                                            Dari Tanggal
+                                        </label>
+
+                                        <input type="date"
+                                            class="form-control">
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <label class="form-label fw-semibold">
+                                            Sampai Tanggal
+                                        </label>
+
+                                        <input type="date"
+                                            class="form-control">
+
+                                    </div>
+
+                                    <!-- FILTER BUTTON -->
+                                    <div class="col-md-2">
+
+                                        <button class="btn btn-primary w-100">
+
+                                            <i class="bi bi-funnel"></i>
+                                            Filter
+
+                                        </button>
+
+                                    </div>
+
+                                    <!-- EXPORT -->
+                                    <div class="col-md-4">
+                                        <div class="d-flex gap-2 justify-content-md-end">
+                                           <a href="<?= base_url('transaksi/export/excel'); ?>"
+                                                class="btn btn-outline-success" target="_blank">
+                                                <i class="bi bi-file-earmark-excel"></i>
+                                                Excel
+                                            </a>
+
+                                            <a href="<?= base_url('transaksi/export/pdf'); ?>"
+                                                class="btn btn-outline-danger" target="_blank">
+                                                <i class="bi bi-file-earmark-pdf"></i>
+                                                PDF
+                                            </a>
+
+                                            <a href="<?= base_url('transaksi/print'); ?>"
+                                                class="btn btn-outline-dark" target="_blank">
+                                                <i class="bi bi-printer"></i>
+                                                Print
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- End FILTER -->
+
+
+                        <!-- ======= QUICK INFO ======= -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Riwayat Transaksi
+                                </h6>
+
+                                <small class="text-muted">
+
+                                    Menampilkan seluruh transaksi keuangan masjid
+
+                                </small>
+
+                            </div>
+
+                            <div>
+
+                                <span class="badge bg-primary px-3 py-2">
+
+                                    <i class="bi bi-database"></i>
+
+                                    <?= count($transaksi); ?> Data
+
+                                </span>
+
+                            </div>
+
+                        </div>
+                        <!-- End QUICK INFO -->
+
+
                         <!-- ======= TABLE ======= -->
                         <div class="table-responsive mt-3">
 
-                            <table class="table table-hover table-bordered align-middle datatable">
+                            <table class="table table-hover align-middle datatable">
 
                                 <thead class="table-light">
 
@@ -351,14 +502,15 @@
 
                                                 <!-- EDIT -->
                                                 <a href="<?= base_url('transaksi/edit/'.$row['id']); ?>"
-                                                    class="btn btn-warning btn-sm">
+                                                    class="btn btn-warning btn-sm rounded-3">
 
                                                     <i class="bi bi-pencil-square"></i>
 
                                                 </a>
 
                                                 <!-- DELETE -->
-                                                <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                                <a href="#"
+                                                    class="btn btn-danger btn-sm rounded-3 btn-delete"
                                                     data-url="<?= base_url('transaksi/delete/'.$row['id']); ?>">
 
                                                     <i class="bi bi-trash"></i>
@@ -396,6 +548,26 @@
                         </div>
                         <!-- End TABLE -->
 
+
+                        <!-- ======= FOOTER INFO ======= -->
+                        <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+
+                            <small class="text-muted">
+
+                                Last Update:
+                                <?= date('d M Y H:i'); ?>
+
+                            </small>
+
+                            <small class="text-muted">
+
+                                Sistem Keuangan Masjid Al Hikmah
+
+                            </small>
+
+                        </div>
+                        <!-- End FOOTER INFO -->
+
                     </div>
                     <!-- End Card Body -->
 
@@ -412,3 +584,4 @@
 </main>
 
 <?php echo view('_partials/footer'); ?>
+```

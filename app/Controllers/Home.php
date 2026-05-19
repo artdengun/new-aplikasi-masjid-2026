@@ -22,17 +22,15 @@ class Home extends BaseController
         $data['total_muazin']         = $this->dashboard_model->getCountMuazin();
         $data['total_remaja']         = $this->dashboard_model->getCountRemaja();
         $data['total_ynz']            = $this->dashboard_model->getCountYnz();
-
-
-
         return view('dashboard',  $data);
     }
 
-    public function login(){return view('login');}
+    public function login(){return view('auth/login');}
     public function profile(){return view('profile');}
     public function faq(){return view('faq');}
     public function blank(){return view('blank');}
     public function notfound(){return view('404');}
-    public function register(){return view('register');}
+    public function register(){return view('auth/register');}
     public function contact(){return view('contact');}
+    public function pusatBantuan(){return view('pusat_bantuan');}
 }

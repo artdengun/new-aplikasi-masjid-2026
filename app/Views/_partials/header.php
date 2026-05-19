@@ -160,11 +160,11 @@
                             <i class="bi bi-credit-card"></i><span>Transaksi Keuangan</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('laporan-keuangan'); ?>">
                             <i class="bi bi-file-earmark-bar-graph"></i><span>Laporan Keuangan</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
@@ -191,23 +191,18 @@
             <!-- KEGIATAN -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#kegiatan-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-calendar-event"></i><span>Kegiatan Masjid</span>
+                    <i class="bi bi-calendar-event"></i><span>Kegiatan & Dakwah</span>
                     <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="kegiatan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="<?= base_url('jadwal-sholat'); ?>">
-                            <i class="bi bi-clock"></i><span>Jadwal Shalat</span>
+                        <a href="<?= base_url('kegiatan-masjid'); ?>">
+                            <i class="bi bi-book"></i><span>Kegiatan Masjid</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('jadwal-kajian'); ?>">
-                            <i class="bi bi-book"></i><span>Jadwal Kajian</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('kegiatan-sosial'); ?>">
-                            <i class="bi bi-person-circle"></i><span>Kegiatan Sosial</span>
+                        <a href="<?= base_url('pengumuman'); ?>">
+                            <i class="bi bi-person-circle"></i><span>Pengumuman</span>
                         </a>
                     </li>
                 </ul>
@@ -234,35 +229,13 @@
             </li>
 
             <!-- PANDUAN -->
-            <li class="nav-heading">Panduan Penggunaan</li>
+            <li class="nav-heading">Panduan</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('bantuan/keuangan'); ?>">
+                <a class="nav-link collapsed" href="<?= base_url('pusat-bantuan'); ?>">
                     <i class="bi bi-question-circle"></i>
-                    <span>Panduan Keuangan</span>
+                    <span>Pusat Bantuan</span>
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('bantuan/aset'); ?>">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Panduan Aset</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('bantuan/kegiatan'); ?>">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Panduan Kegiatan</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('bantuan/jamaah'); ?>">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Panduan Jamaah</span>
-                </a>
-            </li>
-
     </aside>
     ><!-- End Sidebar-->
