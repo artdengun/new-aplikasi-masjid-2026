@@ -74,7 +74,7 @@
                         <div class="row mt-4 mb-4 g-3">
 
                             <!-- TOTAL -->
-                            <div class="col-md-4">
+                            <div class="col-md-3">
 
                                 <div class="card bg-primary text-white shadow-sm border-0">
 
@@ -104,8 +104,39 @@
 
                             </div>
 
-                            <!-- PUBLISH -->
-                            <div class="col-md-4">
+                            <!-- AKAN DATANG -->
+                            <div class="col-md-3">
+
+                                <div class="card bg-info text-white shadow-sm border-0">
+
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+
+                                            <div>
+
+                                                <h6 class="mb-1">
+                                                    Akan Datang
+                                                </h6>
+
+                                                <h3 class="mb-0">
+                                                    <?= count(array_filter($kegiatan, fn($k) => $k['status'] == 'Akan Datang')); ?>
+                                                </h3>
+
+                                            </div>
+
+                                            <i class="bi bi-calendar-plus fs-1"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- BERLANGSUNG -->
+                            <div class="col-md-3">
 
                                 <div class="card bg-success text-white shadow-sm border-0">
 
@@ -116,16 +147,16 @@
                                             <div>
 
                                                 <h6 class="mb-1">
-                                                    Publish
+                                                    Berlangsung
                                                 </h6>
 
                                                 <h3 class="mb-0">
-                                                    <?= count(array_filter($kegiatan, fn($k) => $k['status'] == 'publish')); ?>
+                                                    <?= count(array_filter($kegiatan, fn($k) => $k['status'] == 'Berlangsung')); ?>
                                                 </h3>
 
                                             </div>
 
-                                            <i class="bi bi-check-circle fs-1"></i>
+                                            <i class="bi bi-broadcast fs-1"></i>
 
                                         </div>
 
@@ -135,10 +166,10 @@
 
                             </div>
 
-                            <!-- DRAFT -->
-                            <div class="col-md-4">
+                            <!-- SELESAI -->
+                            <div class="col-md-3">
 
-                                <div class="card bg-warning text-dark shadow-sm border-0">
+                                <div class="card bg-secondary text-white shadow-sm border-0">
 
                                     <div class="card-body">
 
@@ -147,16 +178,16 @@
                                             <div>
 
                                                 <h6 class="mb-1">
-                                                    Draft
+                                                    Selesai
                                                 </h6>
 
                                                 <h3 class="mb-0">
-                                                    <?= count(array_filter($kegiatan, fn($k) => $k['status'] == 'draft')); ?>
+                                                    <?= count(array_filter($kegiatan, fn($k) => $k['status'] == 'Selesai')); ?>
                                                 </h3>
 
                                             </div>
 
-                                            <i class="bi bi-pencil-square fs-1"></i>
+                                            <i class="bi bi-check-circle fs-1"></i>
 
                                         </div>
 
@@ -184,7 +215,9 @@
                                         <th>Tanggal</th>
                                         <th>Jam</th>
                                         <th>Lokasi</th>
+                                        <th>Pembicara</th>
                                         <th>Status</th>
+                                        <th>Penanggung Jawab</th>
                                         <th width="120">Aksi</th>
 
                                     </tr>
@@ -197,36 +230,43 @@
 
                                     <tr>
 
+                                        <!-- NO -->
                                         <td>
                                             <?= $key + 1 ?>
                                         </td>
 
-                                        <td>
+                                        <!-- GAMBAR -->
+                                        <td width="100">
 
-                                            <?php if($row['gambar']): ?>
+                                            <?php if(!empty($row['gambar'])): ?>
 
                                             <img src="<?= base_url('uploads/kegiatan/' . $row['gambar']); ?>"
-                                                width="80"
-                                                class="rounded shadow-sm">
+                                                alt="<?= $row['judul']; ?>"
+                                                class="rounded shadow-sm"
+                                                style="width:80px;height:80px;object-fit:cover;">
 
                                             <?php else: ?>
 
-                                            <span class="badge bg-secondary">
-                                                No Image
-                                            </span>
+                                            <div class="bg-light border rounded d-flex align-items-center justify-content-center"
+                                                style="width:80px;height:80px;">
+
+                                                <i class="bi bi-image text-secondary fs-3"></i>
+
+                                            </div>
 
                                             <?php endif; ?>
 
                                         </td>
 
+                                        <!-- JUDUL -->
                                         <td>
 
                                             <strong>
                                                 <?= $row['judul']; ?>
                                             </strong>
-
                                         </td>
 
+                                        <!-- KATEGORI -->
                                         <td>
 
                                             <span class="badge bg-info text-dark">
@@ -239,6 +279,7 @@
 
                                         </td>
 
+                                        <!-- TANGGAL -->
                                         <td>
 
                                             <span class="badge bg-primary">
@@ -251,6 +292,7 @@
 
                                         </td>
 
+                                        <!-- JAM -->
                                         <td>
 
                                             <span class="badge bg-dark">
@@ -263,6 +305,7 @@
 
                                         </td>
 
+                                        <!-- LOKASI -->
                                         <td>
 
                                             <i class="bi bi-geo-alt"></i>
@@ -271,23 +314,46 @@
 
                                         </td>
 
+                                        <!-- PEMBICARA -->
                                         <td>
 
-                                            <?php if($row['status'] == 'publish'): ?>
+                                            <span class="badge bg-light text-dark border">
+
+                                                <i class="bi bi-person"></i>
+
+                                                <?= $row['pembicara']; ?>
+
+                                            </span>
+
+                                        </td>
+
+                                        <!-- STATUS -->
+                                        <td>
+
+                                            <?php if($row['status'] == 'Akan Datang'): ?>
+
+                                            <span class="badge bg-info">
+
+                                                <i class="bi bi-calendar-plus"></i>
+                                                Akan Datang
+
+                                            </span>
+
+                                            <?php elseif($row['status'] == 'Berlangsung'): ?>
 
                                             <span class="badge bg-success">
 
-                                                <i class="bi bi-check-circle"></i>
-                                                Publish
+                                                <i class="bi bi-broadcast"></i>
+                                                Berlangsung
 
                                             </span>
 
                                             <?php else: ?>
 
-                                            <span class="badge bg-warning text-dark">
+                                            <span class="badge bg-secondary">
 
-                                                <i class="bi bi-pencil-square"></i>
-                                                Draft
+                                                <i class="bi bi-check-circle"></i>
+                                                Selesai
 
                                             </span>
 
@@ -295,6 +361,12 @@
 
                                         </td>
 
+                                         <!-- PENANGGUNG JAWAB -->
+                                        <td>
+                                             <?= $row['penanggung_jawab']; ?>
+                                        </td>
+
+                                        <!-- AKSI -->
                                         <td>
 
                                             <div class="d-flex gap-1">

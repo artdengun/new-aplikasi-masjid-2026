@@ -52,7 +52,7 @@
 
                         </h5>
 
-                        <form action="<?= base_url('kegiatan/save'); ?>" method="post">
+                        <form action="<?= base_url('kegiatan/save'); ?>" method="post" enctype="multipart/form-data">
 
                             <div class="row">
 
@@ -66,11 +66,8 @@
                                             Nama Kegiatan
                                         </label>
 
-                                        <input type="text"
-                                               name="judul"
-                                               class="form-control"
-                                               placeholder="Contoh: Kajian Subuh"
-                                               required>
+                                        <input type="text" name="judul" class="form-control"
+                                            placeholder="Contoh: Kajian Subuh" required>
 
                                     </div>
 
@@ -128,10 +125,7 @@
                                             Tanggal Kegiatan
                                         </label>
 
-                                        <input type="date"
-                                               name="tanggal_kegiatan"
-                                               class="form-control"
-                                               required>
+                                        <input type="date" name="tanggal_kegiatan" class="form-control" required>
 
                                     </div>
 
@@ -147,10 +141,7 @@
                                             Jam Kegiatan
                                         </label>
 
-                                        <input type="time"
-                                               name="jam"
-                                               class="form-control"
-                                               required>
+                                        <input type="time" name="jam_kegiatan" class="form-control" required>
 
                                     </div>
 
@@ -166,11 +157,8 @@
                                             Tempat
                                         </label>
 
-                                        <input type="text"
-                                               name="lokasi"
-                                               class="form-control"
-                                               placeholder="Contoh: Aula Masjid"
-                                               required>
+                                        <input type="text" name="lokasi" class="form-control"
+                                            placeholder="Contoh: Aula Masjid" required>
 
                                     </div>
 
@@ -186,11 +174,8 @@
                                             Pembicara / Ustadz
                                         </label>
 
-                                        <input type="text"
-                                               name="pembicara"
-                                               class="form-control"
-                                               placeholder="Contoh: Ustadz Ahmad"
-                                               required>
+                                        <input type="text" name="pembicara" class="form-control"
+                                            placeholder="Contoh: Ustadz Ahmad" required>
 
                                     </div>
 
@@ -240,10 +225,47 @@
                                             Target Peserta
                                         </label>
 
-                                        <input type="number"
-                                               name="peserta"
-                                               class="form-control"
-                                               placeholder="Contoh: 100">
+                                        <input type="number" name="peserta" class="form-control"
+                                            placeholder="Contoh: 100">
+
+                                    </div>
+
+                                </div>
+                                <!-- DESKRIPSI -->
+                                <div class="col-md-12">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            <i class="bi bi-card-text"></i>
+                                           Penanggung Jawab Acara
+                                        </label>
+
+                                        <input type="string" name="penanggung_jawab" class="form-control"
+                                            placeholder="Contoh: Arifin Akmal">
+
+                                    </div>
+
+                                </div>
+
+                                <!-- GAMBAR -->
+                                <div class="col-md-12">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            <i class="bi bi-image"></i>
+                                            Upload Gambar Kegiatan
+                                        </label>
+
+                                        <input type="file"
+                                            name="gambar"
+                                            class="form-control"
+                                            accept="image/*">
+
+                                        <small class="text-muted">
+                                            Format: JPG, PNG, JPEG
+                                        </small>
 
                                     </div>
 
@@ -259,10 +281,8 @@
                                             Deskripsi Kegiatan
                                         </label>
 
-                                        <textarea name="deskripsi"
-                                                  rows="5"
-                                                  class="form-control"
-                                                  placeholder="Masukkan deskripsi kegiatan"></textarea>
+                                        <textarea name="deskripsi" rows="5" class="form-control"
+                                            placeholder="Masukkan deskripsi kegiatan"></textarea>
 
                                     </div>
 
@@ -272,16 +292,14 @@
 
                             <div class="text-end">
 
-                                <a href="<?= base_url('kegiatan'); ?>"
-                                   class="btn btn-secondary">
+                                <a href="<?= base_url('kegiatan'); ?>" class="btn btn-secondary">
 
                                     <i class="bi bi-arrow-left"></i>
                                     Kembali
 
                                 </a>
 
-                                <button type="submit"
-                                        class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
 
                                     <i class="bi bi-save"></i>
                                     Simpan

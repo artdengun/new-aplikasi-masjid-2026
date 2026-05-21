@@ -17,7 +17,12 @@ class KegiatanModel extends Model
         'gambar',
         'tanggal_kegiatan',
         'lokasi',
-        'status'
+        'status',
+        'jam_kegiatan',
+        'kategori',
+        'pembicara',
+        'peserta',
+        'penanggung_jawab',
     ];
 
     protected $useTimestamps = true;

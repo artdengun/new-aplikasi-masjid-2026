@@ -66,7 +66,9 @@
 
                         </h5>
 
-                        <form action="<?= base_url('kegiatan/save'); ?>" method="post">
+                        <form action="<?= base_url('kegiatan/update/'.$kegiatan['id']); ?>"
+                            method="post"
+                            enctype="multipart/form-data">
 
                             <input type="hidden" name="id" value="<?= $kegiatan['id']; ?>">
 
@@ -85,11 +87,11 @@
                                         </label>
 
                                         <input type="text"
-                                               name="judul"
-                                               class="form-control"
-                                               placeholder="Contoh: Kajian Subuh"
-                                               value="<?= $kegiatan['judul']; ?>"
-                                               required>
+                                            name="judul"
+                                            class="form-control"
+                                            placeholder="Contoh: Kajian Subuh"
+                                            value="<?= $kegiatan['judul']; ?>"
+                                            required>
 
                                     </div>
 
@@ -108,11 +110,11 @@
                                         </label>
 
                                         <select name="kategori"
-                                                class="form-select"
-                                                required>
+                                            class="form-select"
+                                            required>
 
                                             <option value="">
-                                                -- Pilih --
+                                                -- Pilih Kategori --
                                             </option>
 
                                             <option <?= $kegiatan['kategori'] == 'Kajian' ? 'selected' : ''; ?>
@@ -159,10 +161,10 @@
                                         </label>
 
                                         <input type="date"
-                                               name="tanggal_kegiatan"
-                                               class="form-control"
-                                               value="<?= $kegiatan['tanggal_kegiatan']; ?>"
-                                               required>
+                                            name="tanggal_kegiatan"
+                                            class="form-control"
+                                            value="<?= $kegiatan['tanggal_kegiatan']; ?>"
+                                            required>
 
                                     </div>
 
@@ -181,10 +183,10 @@
                                         </label>
 
                                         <input type="time"
-                                               name="jam_kegiatan"
-                                               class="form-control"
-                                               value="<?= $kegiatan['jam_kegiatan']; ?>"
-                                               required>
+                                            name="jam_kegiatan"
+                                            class="form-control"
+                                            value="<?= $kegiatan['jam_kegiatan']; ?>"
+                                            required>
 
                                     </div>
 
@@ -203,11 +205,11 @@
                                         </label>
 
                                         <input type="text"
-                                               name="lokasi"
-                                               class="form-control"
-                                               placeholder="Contoh: Aula Masjid"
-                                               value="<?= $kegiatan['lokasi']; ?>"
-                                               required>
+                                            name="lokasi"
+                                            class="form-control"
+                                            placeholder="Contoh: Aula Masjid"
+                                            value="<?= $kegiatan['lokasi']; ?>"
+                                            required>
 
                                     </div>
 
@@ -226,11 +228,11 @@
                                         </label>
 
                                         <input type="text"
-                                               name="pembicara"
-                                               class="form-control"
-                                               placeholder="Contoh: Ustadz Ahmad"
-                                               value="<?= $kegiatan['pembicara']; ?>"
-                                               required>
+                                            name="pembicara"
+                                            class="form-control"
+                                            placeholder="Contoh: Ustadz Ahmad"
+                                            value="<?= $kegiatan['pembicara']; ?>"
+                                            required>
 
                                     </div>
 
@@ -249,11 +251,11 @@
                                         </label>
 
                                         <select name="status"
-                                                class="form-select"
-                                                required>
+                                            class="form-select"
+                                            required>
 
                                             <option value="">
-                                                -- Pilih --
+                                                -- Pilih Status --
                                             </option>
 
                                             <option <?= $kegiatan['status'] == 'Akan Datang' ? 'selected' : ''; ?>
@@ -277,7 +279,7 @@
 
                                 </div>
 
-                                <!-- PESERTA -->
+                                <!-- TARGET PESERTA -->
                                 <div class="col-md-6">
 
                                     <div class="mb-3">
@@ -290,14 +292,83 @@
                                         </label>
 
                                         <input type="number"
-                                               name="peserta"
-                                               class="form-control"
-                                               placeholder="Contoh: 100"
-                                               value="<?= $kegiatan['peserta']; ?>">
+                                            name="peserta"
+                                            class="form-control"
+                                            placeholder="Contoh: 100"
+                                            value="<?= $kegiatan['peserta']; ?>">
 
                                     </div>
 
                                 </div>
+
+                                <!-- PENANGGUNG JAWAB -->
+                                <div class="col-md-12">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+
+                                            <i class="bi bi-person-badge"></i>
+                                            Penanggung Jawab Acara
+
+                                        </label>
+
+                                        <input type="text"
+                                            name="penanggung_jawab"
+                                            class="form-control"
+                                            placeholder="Contoh: Arifin Akmal"
+                                            value="<?= $kegiatan['penanggung_jawab']; ?>">
+
+                                    </div>
+
+                                </div>
+
+                                <!-- GAMBAR -->
+                                <div class="col-md-12">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+
+                                            <i class="bi bi-image"></i>
+                                            Upload Gambar
+
+                                        </label>
+
+                                        <input type="file"
+                                            name="gambar"
+                                            class="form-control"
+                                            accept="image/*">
+
+                                    </div>
+
+                                </div>
+
+                                <!-- PREVIEW GAMBAR -->
+                                <?php if(!empty($kegiatan['gambar'])): ?>
+
+                                <div class="col-md-12">
+
+                                    <div class="mb-3">
+
+                                        <label class="form-label">
+                                            Gambar Saat Ini
+                                        </label>
+
+                                        <div>
+
+                                            <img src="<?= base_url('uploads/kegiatan/' . $kegiatan['gambar']); ?>"
+                                                alt="<?= $kegiatan['judul']; ?>"
+                                                class="rounded shadow-sm border"
+                                                style="width:200px;height:150px;object-fit:cover;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <?php endif; ?>
 
                                 <!-- DESKRIPSI -->
                                 <div class="col-md-12">
@@ -312,9 +383,9 @@
                                         </label>
 
                                         <textarea name="deskripsi"
-                                                  rows="5"
-                                                  class="form-control"
-                                                  placeholder="Masukkan deskripsi kegiatan"><?= $kegiatan['deskripsi']; ?></textarea>
+                                            rows="5"
+                                            class="form-control"
+                                            placeholder="Masukkan deskripsi kegiatan"><?= $kegiatan['deskripsi']; ?></textarea>
 
                                     </div>
 
@@ -325,7 +396,7 @@
                             <div class="text-end">
 
                                 <a href="<?= base_url('kegiatan'); ?>"
-                                   class="btn btn-secondary">
+                                    class="btn btn-secondary">
 
                                     <i class="bi bi-arrow-left"></i>
                                     Kembali
@@ -333,7 +404,7 @@
                                 </a>
 
                                 <button type="submit"
-                                        class="btn btn-primary">
+                                    class="btn btn-primary">
 
                                     <i class="bi bi-save"></i>
                                     Update Data

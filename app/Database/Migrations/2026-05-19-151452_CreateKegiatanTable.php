@@ -9,6 +9,7 @@ class CreateKegiatanTable extends Migration
     public function up()
     {
         $this->forge->addField([
+
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
@@ -36,26 +37,55 @@ class CreateKegiatanTable extends Migration
                 'null'       => true,
             ],
 
+            'kategori' => [
+                'type'       => 'ENUM',
+                'constraint' => [
+                    'Kajian',
+                    'Sholat',
+                    'Pengajian',
+                    'Santunan',
+                    'Ramadhan',
+                    'Tabligh Akbar',
+                    'Kajian Subuh',
+                    'Kajian Ba\'da Maghrib'
+                ],
+                'default' => 'Kajian',
+            ],
+
             'tanggal_kegiatan' => [
                 'type' => 'DATE',
             ],
-             'kategori' => [
+
+            'jam_kegiatan' => [
+                'type' => 'TIME',
+            ],
+
+            'pembicara' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null'       => true,
             ],
+
             'lokasi' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
                 'null'       => true,
             ],
-            'jam_kegiatan' => [
-                'type' => 'TIME',
+            'peserta' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true,
+            ],
+
+             'penanggung_jawab' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true,
             ],
             'status' => [
                 'type'       => 'ENUM',
-                'constraint' => ['publish', 'draft'],
-                'default'    => 'publish',
+                'constraint' => ['Akan Datang', 'Berlangsung', 'Selesai'],
+                'default'    => 'Akan Datang',
             ],
 
             'created_at' => [
@@ -67,9 +97,11 @@ class CreateKegiatanTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+
         ]);
 
         $this->forge->addKey('id', true);
+
         $this->forge->addUniqueKey('slug');
 
         $this->forge->createTable('kegiatan');
