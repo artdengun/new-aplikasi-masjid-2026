@@ -50,15 +50,10 @@ $routes->get('/pusat-bantuan','Home::pusatBantuan');
 
 $routes->group('kegiatan', function ($routes) {
     $routes->get('/', 'KegiatanController::index');
-
     $routes->get('create', 'KegiatanController::create');
-
     $routes->post('save', 'KegiatanController::save');
-
     $routes->get('edit/(:num)', 'KegiatanController::edit/$1');
-
     $routes->post('update/(:num)', 'KegiatanController::update/$1');
-
     $routes->get('delete/(:num)', 'KegiatanController::delete/$1');
 });
 
@@ -77,32 +72,30 @@ $routes->group('transaksi', function($routes){
 
 // INVENTARIS MASJID
 $routes->group('inventaris', function($routes){
-
     $routes->get('/', 'InventarisController::index');
-
     $routes->get('create', 'InventarisController::create');
-
     $routes->post('save', 'InventarisController::save');
-
     $routes->get('edit/(:num)', 'InventarisController::edit/$1');
-
     $routes->get('delete/(:num)', 'InventarisController::delete/$1');
-
 });
 
 // pemeliharaan masjid terkait data inventaris
 $routes->group('pemeliharaan', function($routes){
-
     $routes->get('/', 'PemeliharaanController::index');
-
     $routes->get('create', 'PemeliharaanController::create');
-
     $routes->post('save', 'PemeliharaanController::save');
-
     $routes->get('edit/(:num)', 'PemeliharaanController::edit/$1');
-
     $routes->get('delete/(:num)', 'PemeliharaanController::delete/$1');
+});
 
+
+$routes->group('pengumuman', function($routes){
+    $routes->get('/', 'PengumumanController::index');
+    $routes->get('create', 'PengumumanController::create');
+    $routes->post('save', 'PengumumanController::save');
+    $routes->get('edit/(:num)', 'PengumumanController::edit/$1');
+    $routes->post('update/(:num)', 'PengumumanController::update/$1');
+    $routes->get('delete/(:num)', 'PengumumanController::delete/$1');
 });
 
 # routes
